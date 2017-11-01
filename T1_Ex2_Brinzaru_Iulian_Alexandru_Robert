@@ -30,3 +30,6 @@ xlabel('Timp [s]')
 ylabel('A [V]')
 grid
 plot(t,s,'-r.')
+
+%nu am reusit sa respect conditia ca panta sa aiba 1V/s si am 
+%modificat perioada semnalului la 6s.
