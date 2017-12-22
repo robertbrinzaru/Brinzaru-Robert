@@ -1,3 +1,4 @@
+
 P=40; %perioada semnalului
 N=50; %numarul de coeficienti ai seriei Fourier
 D=4; %durata semnalului
@@ -13,7 +14,7 @@ s=0.834*sawtooth(w*t,0.5)+0.166; %am folosit functia sawtooth pt generarea semna
 %al doilea parametru al functiei este folosit pentru a regla panta dreptei
 %semnalului, pt valoarea 0.5 se genereaza un semnal triunghiular simetric
 
-for i=1:length(s)  %toate valorile semnalului aflate in afara duratei [8,20] devin nule
+for i=1:length(s)  %toate valorile semnalului aflate in afara duratei [16,20] devin nule
     if (s(i)<0)
         s(i)=0;
     end
@@ -29,10 +30,10 @@ y=0:N; %y va contine coeficientii Fourier ai semnalului
 
 syms x %variabila generica folosita in calculul integral
 for k=0:N
-    y(k+1)=1/P*(int((0.0833*x-0.66)*exp(-1i*k*w*x),8,20) + int((-0.0833*x+2.66)*exp(-1i*k*w*x),20,32));
+    y(k+1)=1/P*(int((0.0833*x-0.66)*exp(-1i*k*w*x),16,20) + int((-0.0833*x+2.66)*exp(-1i*k*w*x),20,24));
 end
-% calculez cei 50 de coeficienti integrand cele 2 drepte care formeaza
-% semnalul, pe intervalul [8,20], respectiv [20,32]
+% calculez cei 50 de coeficiei integrand cele 2 drepte care formeaza
+% semnalul, pe intervalul [16,20], respectiv [20,24]
 
 figure(2)          %afisez spectrul semnalului
 stem(0:N,abs(y))
